@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.GameResult"
+	 width="600"
+	height="800" xmlns:e="http://ns.egret.com/eui">
+	<e:Rect width="600" height="800" x="0" y="0" fillAlpha="0.5"/>
+	<e:Label id="txt_type" text="游戏结束" x="87.281" y="62.336" size="80" width="425.438" textAlign="center"/>
+	<e:Group width="600" height="465" x="0" y="177.76">
+		<e:Label text="游戏时长：" x="60" y="89"/>
+		<e:Label x="60" y="192.24" text="消耗弹药："/>
+		<e:Label id="txt_hit_type" text="被击中次数：" x="55.055" y="291"/>
+		<e:Label id="txt_time" x="241.659" y="89"/>
+		<e:Label id="txt_bullet" x="241.659" y="192.24"/>
+		<e:Label id="txt_hit" x="241.659" y="291"/>
+		<e:Label text="击破分数：" x="55" y="378"/>
+		<e:Label id="txt_defeat" x="241" y="378"/>
+	</e:Group>
+	<e:Button id="btn_retry" label="再玩" x="219.323" y="696.659" width="170.902" height="66.683"/>
+</e:Skin>

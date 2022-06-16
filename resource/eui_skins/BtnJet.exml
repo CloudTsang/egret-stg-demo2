@@ -1,0 +1,8 @@
+<e:Skin class="skins.BtnJet" states="up,down"
+	 width="100"
+	height="100" xmlns:e="http://ns.egret.com/eui"
+     width.up="200" height.up="200" width.down="200" height.down="200">
+	<e:Rect width="200" height="200" x="0" y="1" ellipseWidth="200" ellipseHeight="200" fillAlpha="0.3" includeIn="up" fillColor="0xAEABAB"/>
+	<e:Rect width="200" height="200" x="0" y="1" ellipseWidth="200" ellipseHeight="200" fillAlpha="0.8" includeIn="down" fillColor="0x515050"/>
+	<e:Image  percentHeight="100" percentWidth="100" source="sheet_json#barrier"/>
+</e:Skin>

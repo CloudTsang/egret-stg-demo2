@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.TimeLimit"
+	 width="200"
+	height="100" xmlns:e="http://ns.egret.com/eui">
+	<e:Label id="txt" text="5:00" percentHeight="100" percentWidth="100" verticalAlign="middle" textAlign="center" size="60" bold="true" textColor="0xDCDCDC"/>
+</e:Skin>

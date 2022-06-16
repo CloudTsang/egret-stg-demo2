@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="Description" width="600" height="800" xmlns:e="http://ns.egret.com/eui" states="p0,p1,p4,p3,p2" >
+	<e:Rect width="600" height="800" x="0" y="0" fillAlpha="0.4"/>
+	<e:Group percentWidth="100" percentHeight="100" includeIn="p0">
+    
+     <e:layout>
+        <e:VerticalLayout horizontalAlign="center"/>
+    </e:layout>
+		<e:Group width="0" height="30" x="138" y="275"/>
+		<e:Image width="200" height="240" x="185" y="235" source="sheet_json#plane1"/>
+		<e:Group width="0" height="30" x="294" y="277"/>
+        <e:Label text="游戏目标" x="365" y="340" size="60" />
+        <e:Group width="0" height="30" x="246" y="381" />
+		<e:Label percentWidth="90" text="驾驶战机在3分钟内躲避或防御敌机的子弹并击落尽可能多的敌机以获取更高的分数。注意拾取宝箱道具来获得强化。" x="292" y="498" size="45" wordWrap="true" multiline="true"/>
+
+    </e:Group>
+	<e:Group percentWidth="100" percentHeight="100" includeIn="p4" >
+        <e:Group height="30" x="362" y="351"/>
+        <e:Group percentWidth="100" height="200" x="133" y="244" >
+			<e:Image width="200" height="200" source="sheet_json#radar" horizontalCenter="0" top="0" x="0" y="206" scaleX="1" scaleY="1" />
+			<e:layout>
+				<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>
+			</e:layout>
+		</e:Group>
+        <e:Group width="0" height="30" x="228" y="276" />
+		<e:Label text="雷达" x="365" y="340" size="60" />
+        <e:Group width="0" height="30" x="246" y="381" />
+        <e:Label percentWidth="90" text="显示一定范围内的敌机和宝箱的方向。" x="292" y="498" size="45" wordWrap="true" multiline="true"/>
+		<e:Group width="0" height="30" x="240" y="590"/>
+		<e:Group percentWidth="100" height="100">
+            <e:Label text="敌机标记" x="191" y="33" size="50"/>
+			<e:Rect width="35" height="35" x="229" y="55" fillColor="0xFF4500" ellipseHeight="100" ellipseWidth="100"/>
+			<e:Group width="30" height="0" x="462" y="44"/>
+			<e:Label text="宝箱标记" x="191" y="33" size="50"/>
+			<e:Rect width="35" height="35" x="229" y="55" fillColor="0xFFD700" ellipseHeight="100" ellipseWidth="100"/>
+			<e:layout>
+				<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>
+			</e:layout>
+		</e:Group>
+        <e:layout>
+			<e:VerticalLayout horizontalAlign="center"/>
+		</e:layout>
+    </e:Group>
+	<e:Group percentWidth="100" percentHeight="100" includeIn="p3" >
+        <e:Group height="30" x="362" y="351"/>
+        <e:Group percentWidth="100" height="160" x="133" y="244" >
+			<e:Image width="160" height="160" source="sheet_json#barrier" horizontalCenter="0" top="0" x="0" y="206" scaleX="1" scaleY="1" />
+			<e:Group width="100" height="0" x="399" y="77" />
+			<e:Label text="X键" x="558" y="90" size="60" />
+			<e:layout>
+				<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>
+			</e:layout>
+		</e:Group>
+        <e:Group width="0" height="20" x="228" y="276" />
+		<e:Label text="开启/关闭护盾" x="365" y="340" size="50" />
+        <e:Group width="0" height="20" x="246" y="381" />
+        <e:Label percentWidth="90" text="开启护盾后，护盾耐久将缓慢降低，被敌机子弹击中时降低一定值但减免对机体的伤害。护盾可随时手动关闭或在耐久降至0时自动解除。拾取特定强化道具可以使护盾耐久回复满并一定时间内不会降低。" x="292" y="498" size="38" wordWrap="true" multiline="true"/>
+		<e:Group width="0" height="20" x="240" y="590"/>
+		<e:Group percentWidth="100" height="100">
+			<e:Group width="100" height="100" x="431" y="10">
+				<e:Image percentWidth="100" percentHeight="100" x="0" y="0" source="sheet_json#buff"/>
+				<e:Label percentWidth="100" percentHeight="100" x="0" y="0" textColor="0x000000" size="80" bold="true" verticalAlign="middle" textAlign="center" text="★"/>
+			</e:Group>
+			<e:Group width="30" height="0" x="469" y="42"/>
+			<e:Group width="200" percentHeight="100" x="518" y="29">
+				<e:Label text="护盾耐久槽" x="95" y="10" size="34"/>
+				<e:ProgressBar width="200" height="30" x="-206" y="35.000000000000114" value="75" scaleX="1" scaleY="1"/>
+				<e:layout>
+					<e:VerticalLayout verticalAlign="middle" horizontalAlign="center"/>
+				</e:layout>
+			</e:Group>
+			<e:layout>
+				<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>
+			</e:layout>
+		</e:Group>
+        <e:layout>
+			<e:VerticalLayout horizontalAlign="center"/>
+		</e:layout>
+    </e:Group>
+
+	<e:Group percentWidth="100" percentHeight="100" includeIn="p2" >
+        <e:Group height="30" x="362" y="351"/>
+        <e:Group percentWidth="100" height="200" x="133" y="244" >
+			<e:Image width="200" height="200" source="sheet_json#btn_bullet" horizontalCenter="0" top="0" x="0" y="206" scaleX="1" scaleY="1" />
+			<e:Group width="100" height="0" x="399" y="77" />
+			<e:Label text="Z键" x="558" y="90" size="60" />
+			<e:layout>
+				<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>
+			</e:layout>
+		</e:Group>
+        <e:Group width="0" height="30" x="228" y="276" />
+		<e:Label text="射击" x="365" y="340" size="60" />
+        <e:Group width="0" height="30" x="246" y="381" />
+        <e:Label percentWidth="90" text="发射子弹击破敌机获得分数，或击破宝箱并拾取道具，可以获得子弹威力增强或同时多方向发射等效果。" x="292" y="498" size="45" wordWrap="true" multiline="true"/>
+		<e:Group width="0" height="30" x="240" y="590"/>
+		<e:Group percentWidth="100" height="100">
+			<e:Image width="100" height="100" x="160" y="37" source="sheet_json#drift"/>
+			<e:Label text="→" x="401" y="56" size="50" bold="true"/>
+			<e:Group width="100" height="100" x="431" y="10">
+				<e:Image percentWidth="100" percentHeight="100" x="0" y="0" source="sheet_json#buff"/>
+				<e:Label text="B" percentWidth="100" percentHeight="100" x="0" y="0" textColor="0x000000" size="80" bold="true" verticalAlign="middle" textAlign="center"/>
+			</e:Group>
+			<e:layout>
+				<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>
+			</e:layout>
+		</e:Group>
+        <e:layout>
+			<e:VerticalLayout horizontalAlign="center"/>
+		</e:layout>
+    </e:Group>
+
+	<e:Group percentWidth="100" percentHeight="100" x="0" y="0" includeIn="p1">
+		<e:Group height="30" x="362" y="351" />
+		<e:Group percentWidth="100" height="200" x="133" y="244" >
+			<e:Image width="200" height="200" source="sheet_json#analog" horizontalCenter="0" top="0" x="0" y="206" scaleX="1" scaleY="1" />
+			<e:Group width="100" height="0" x="399" y="77" />
+			<e:Label text="方向键" x="558" y="90" size="60" />
+			<e:layout>
+				<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>
+			</e:layout>
+		</e:Group>
+		<e:Group width="0" height="30" x="228" y="276"/>
+		<e:Label text="控制机体移动" x="365" y="340" size="60" />
+		<e:Group width="0" height="30" x="246" y="381" />
+		<e:Label percentWidth="90" text="虚拟摇杆朝斜上/下方（只有单层边框的方向）滑动时，或方向键同时按下左/右和上/下键时，机体将进行加/减速左/右回旋。否则仅加/减速或保持普通速度左/右回旋。" x="292" y="498" size="45" wordWrap="true" multiline="true"/>
+		<e:layout>
+			<e:VerticalLayout horizontalAlign="center"/>
+		</e:layout>
+    </e:Group>
+	<e:Button id="btn_next" label="▶" horizontalCenter="0" bottom="20" width="120" height="50" label.p4="✖" touchChildren="true"/>
+</e:Skin>

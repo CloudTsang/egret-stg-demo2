@@ -1,0 +1,4 @@
+class Dialog {
+	public constructor() {
+	}
+}

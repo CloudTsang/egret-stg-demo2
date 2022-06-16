@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.enemyPlane"
+	 width="405"
+	height="510" xmlns:e="http://ns.egret.com/eui" states="normal,rspin,lspin" >
+	<e:Image percentHeight="100" percentWidth="100"  x="0" y="0" source="sheet_json#plane4" 
+    source.rspin="sheet_json#plane4spin" source.lspin="sheet_json#plane4spin2" 
+    />
+</e:Skin>

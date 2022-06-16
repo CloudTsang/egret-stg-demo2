@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.ControlPanel"
+	 width="800"
+	height="400" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*">
+	<e:Button id="btn_barrier" label="Button" x="601" y="-26" skinName="skins.BtnJet"/>
+	<e:Button id="btn_shot" label="Button" x="601" y="203" skinName="skins.BtnBullet"/>
+	<e:Group id="analog" width="400" height="400" x="200" y="200" anchorOffsetX="200" anchorOffsetY="200">
+		<e:Image width="300" height="300"  horizontalCenter="0" verticalCenter="0" source="sheet_json#analog"/>
+		<e:Group width="400" height="400" x="0" y="0">
+			<e:Group width="400" height="133" x="0" y="0">
+				<e:Rect id="leftup" width="133" height="133" x="0" y="0" fillAlpha="0" name="leftup"/>
+				<e:Rect id="up" width="133" height="133" x="10" y="10" fillAlpha="0" name="up"/>
+				<e:Rect id="rightup" width="133" height="133" x="20" y="20" fillAlpha="0" name="rightup"/>
+				<e:layout>
+					<e:HorizontalLayout gap="0"/>
+				</e:layout>
+			</e:Group>
+			<e:Group width="400" height="133" x="10" y="10">
+				<e:layout>
+				<e:HorizontalLayout gap="0"/>
+				</e:layout>
+				<e:Rect id="left" width="133" height="133" x="0" y="133" fillAlpha="0" scaleX="1" scaleY="1" name="left"/>
+				<e:Rect width="133" height="133" x="10" y="143" fillAlpha="0" scaleX="1" scaleY="1"/>
+				<e:Rect id="right" width="133" height="133" x="20" y="153" fillAlpha="0" scaleX="1" scaleY="1" name="right"/>
+			</e:Group>
+			<e:Group width="400" height="133" x="20" y="20">
+				<e:layout>
+				<e:HorizontalLayout gap="0"/>
+				</e:layout>
+				<e:Rect id="leftdown" width="133" height="133" x="0" y="133" fillAlpha="0" scaleX="1" scaleY="1" name="leftdown"/>
+				<e:Rect id="down" width="133" height="133" x="10" y="143" fillAlpha="0" scaleX="1" scaleY="1" name="down"/>
+				<e:Rect id="rightdown" width="133" height="133" x="20" y="153" fillAlpha="0" scaleX="1" scaleY="1" name="rightdown"/>
+			</e:Group>
+			<e:layout>
+				<e:VerticalLayout gap="0"/>
+			</e:layout>
+		</e:Group>
+	</e:Group>
+	<ns1:BarrierGauge id="barrier_gauge" width="200" height="30" x="601" y="-83"/>
+</e:Skin>

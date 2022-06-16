@@ -1,0 +1,96 @@
+{
+	"groups": [
+		{
+			"keys": "border_png,header_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,description_json,title_mp3,blast_json,elite_mp3,extreme_mp3,normal_mp3,sheet_json,bgcell2_png,blast_png,explode_mp3,hit_mp3",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/Panel/border.png",
+			"type": "image",
+			"name": "border_png"
+		},
+		{
+			"url": "assets/Panel/header.png",
+			"type": "image",
+			"name": "header_png"
+		},
+		{
+			"url": "assets/Button/button_down.png",
+			"type": "image",
+			"name": "button_down_png"
+		},
+		{
+			"url": "assets/Button/button_up.png",
+			"type": "image",
+			"name": "button_up_png"
+		},
+		{
+			"url": "assets/ProgressBar/thumb_pb.png",
+			"type": "image",
+			"name": "thumb_pb_png"
+		},
+		{
+			"url": "assets/ProgressBar/track_pb.png",
+			"type": "image",
+			"name": "track_pb_png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "title_mp3",
+			"type": "sound",
+			"url": "assets/title.mp3"
+		},
+		{
+			"name": "blast_json",
+			"type": "json",
+			"url": "assets/blast.json"
+		},
+		{
+			"name": "elite_mp3",
+			"type": "sound",
+			"url": "assets/elite.mp3"
+		},
+		{
+			"name": "extreme_mp3",
+			"type": "sound",
+			"url": "assets/extreme.mp3"
+		},
+		{
+			"name": "normal_mp3",
+			"type": "sound",
+			"url": "assets/normal.mp3"
+		},
+		{
+			"name": "sheet_json",
+			"type": "sheet",
+			"url": "assets/sheet.json",
+			"subkeys": "plane4,buff,plane2,drift,plane1,btnjet,plane3,bulletblast,btn_bullet,bullet-2,bullet,jet"
+		},
+		{
+			"name": "bgcell2_png",
+			"type": "image",
+			"url": "assets/bgcell2.png"
+		},
+		{
+			"name": "blast_png",
+			"type": "image",
+			"url": "assets/blast.png"
+		},
+		{
+			"name": "explode_mp3",
+			"type": "sound",
+			"url": "assets/explode.mp3"
+		},
+		{
+			"name": "hit_mp3",
+			"type": "sound",
+			"url": "assets/hit.mp3"
+		}
+	]
+}

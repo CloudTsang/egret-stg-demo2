@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.Title"
+	 width="600"
+	height="250" xmlns:e="http://ns.egret.com/eui">
+	<e:Group percentWidth="100" percentHeight="100">
+		<e:Label text="EEE Combat" percentWidth="100" x="0" y="0" textAlign="center" size="80" textColor="0xFFEE79" scaleX="1" scaleY="1" bold="true"/>
+		<e:Label text="- 杂牌空战 -" x="83" y="86" textColor="0xD2D85A" size="60" bold="true"/>
+		<e:layout>
+			<e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+		</e:layout>
+	</e:Group>
+</e:Skin>
