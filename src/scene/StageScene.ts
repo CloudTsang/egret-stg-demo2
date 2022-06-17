@@ -42,7 +42,7 @@ class StageScene  extends egret.Sprite{
 
         this._bgLayer = new BgLayer(StageScene.MAP_SIZE, this.width, this.height)
         this._bgLayer.addEventListener(PlayEvents.OVER_BORDER, this.onOverBorder, this)
-        window['layer'] = this._bgLayer
+        // window['layer'] = this._bgLayer
 
         const midx = this.width/2
         const midy = this.height/2
@@ -97,9 +97,9 @@ class StageScene  extends egret.Sprite{
         // window['calc'] = ()=>{
         //     AIConfig.planeCalc(this._player, this._enemy[0])
         // }
-        window['stop'] = ()=> {
-            t.removeEventListener(egret.Event.ENTER_FRAME, t.refreshStage, t);
-        }
+        // window['stop'] = ()=> {
+        //     t.removeEventListener(egret.Event.ENTER_FRAME, t.refreshStage, t);
+        // }
     }
 
     

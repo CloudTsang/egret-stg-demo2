@@ -128,7 +128,13 @@ class Main extends eui.UILayer {
         this.currentScene && this.currentScene.dispose();
        let stageScene = new StageScene(this.stage);
        this.stage.addChild(stageScene);
-       setTimeout(()=>{stageScene.startPlay()}, 1000);
+    //    setTimeout(()=>{stageScene.startPlay()}, 1000);
+        const p = new Promise((resolve, reject)=>{
+            setTimeout(()=>{stageScene.startPlay()}, 1000);
+        })
+        p.catch((err)=>[
+            console.log("stage error : ", err)
+        ])
        this.currentScene = stageScene
     }
 

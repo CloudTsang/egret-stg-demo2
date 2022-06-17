@@ -11,7 +11,7 @@ class Barrier {
 	public constructor(p:BasePlane, baseE:number = 0) {
 		this.energy = baseE
 		this._p = p
-		this._filter = new egret.GlowFilter(0xFFD700, 1, 100, 100, 10)
+		this._filter = new egret.GlowFilter(0xFFD700, 1, 10, 10, 1000)
 		this._on = false
 	}
 
