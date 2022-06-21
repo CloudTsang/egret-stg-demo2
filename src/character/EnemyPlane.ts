@@ -1,33 +1,26 @@
 class EnemyPlane extends BasePlane{
 	public aiCfg:AIConfig;
-	
-	protected _playerPosition:egret.Point;
-	protected _driftPosition:egret.Point;
-	
-	protected _shouldShot:boolean;
-
-	protected _movePoint:egret.Point = null;		
-	protected _dx:number = 0;
-	protected _dy:number = 0;	
 
 	protected _disp:PlaneDisp 
 
 	protected _score:number
 
 	protected _rotationDirection:number
+	protected _type:number = 1
 	
 	/** 敌方机体 
 	 * @param apear 从哪个方向出现
 	*/
-	public constructor(pw:number = 3, ph:number = 5, apear:0|90|180|270=180) {
+	public constructor(pw:number = 3, ph:number = 5, apear:0|90|180|270=180, ty:number=1) {
 		super();
 		this.maxHP = 5;
 		this.HP = 5;
 		this.pWidth = pw;
         this.pHeight = ph;
+		this._type = ty
 		this.draw()   
         this.pColor = 0xFF0000;
-		this.gears = [4,10,16];
+		this.gears = WorldData.SPEED.EnemyPlane;
 		this.shotSpeed = 750;
 		this.shotTimer.delay = this.shotSpeed		
 		     
@@ -82,7 +75,7 @@ class EnemyPlane extends BasePlane{
 
 	protected draw(){
 		const t = this
-        let disp = new PlaneDisp(1)
+        let disp = new PlaneDisp(t._type)
         disp.width = t.pWidth*4;
 		disp.height = t.pHeight*4;
 		disp.x = -t.pWidth*2;
@@ -101,6 +94,7 @@ class EnemyPlane extends BasePlane{
         const {dx, dy} = p.moveData.getDAxis()
         this.x += dx
         this.y += dy
+		this._disp.setSpinState(p._rotationDirection)
 		this.checkIfOverBorder()
 	}
 
@@ -155,47 +149,6 @@ class EnemyPlane extends BasePlane{
 		this.stop();		
 		super.crash();
     }  
-
-	/**获取目标点的方位 */
-	protected getDirectionFromMovePoint(){
-		if(!this._movePoint){
-			return;
-		}
-		if(this._movePoint.x > this.x + this.speed){
-			this._dx = 1;
-		}else if(this._movePoint.x < this.x - this.speed){
-			this._dx = -1
-		}else{
-			this._dx = 0
-		}
-		if(this._movePoint.y > this.y + this.speed){
-			this._dy = 1;
-		}else if(this._movePoint.y < this.y - this.speed){
-			this._dy = -1
-		}else{
-			this._dy = 0
-		}
-		
-	}
-
-	protected checkShouldShot(){
-		if(!this._playerPosition){
-			return;
-		}
-		if(this._playerPosition.x > this.x - this.width * 2 && this._playerPosition.x < this.x + this.width * 2){
-			this._shouldShot = true;
-		}else{
-			this._shouldShot = false;
-		}
-	}
-
-	/**获取最少子弹的移动方向 */
-	protected getLessBulletDirection(){
-		
-		let tmpdx = this.x > this._stage.stageWidth - this.x?-1:1;
-		let tmpdy = this.y > this._stage.stageHeight - this.y?-1:1;		
-		return [tmpdx, tmpdy]
-	}
 
 	public get score(){
 		return this._score

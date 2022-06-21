@@ -118,24 +118,34 @@ class Main extends eui.UILayer {
     //    this.toStage() 
     }
 
-    private toTitle(e:any=null){        
+    private toTitle(e:any=null){      
+        this.currentScene && this.currentScene.dispose();
         let titleScene = new TitleScene(this.stage)
         this.stage.addChild(titleScene);
         titleScene.addEventListener(PlayEvents.START, this.toStage, this)
         this.currentScene = titleScene;
     }
-    private toStage(e:any=null){
+    private toStage(e:egret.Event=null){
         this.currentScene && this.currentScene.dispose();
-       let stageScene = new StageScene(this.stage);
+        const mode = e.data.mode
+        let stageScene
+        switch(mode){
+            case GameMode.TIME_ATTACK:
+             stageScene = new StageScene(this.stage);
+             break
+            case GameMode.PRACTICE:
+            stageScene = new PracticeScene(this.stage)
+            break
+            case GameMode.INFINITE:
+            stageScene = new InfiniteScene(this.stage)
+            break
+
+        }
+      
        this.stage.addChild(stageScene);
-    //    setTimeout(()=>{stageScene.startPlay()}, 1000);
-        const p = new Promise((resolve, reject)=>{
-            setTimeout(()=>{stageScene.startPlay()}, 1000);
-        })
-        p.catch((err)=>[
-            console.log("stage error : ", err)
-        ])
        this.currentScene = stageScene
+       stageScene.once(PlayEvents.BACK_2_TITLE, this.toTitle, this)
+        stageScene.startPlay() 
     }
 
     /**

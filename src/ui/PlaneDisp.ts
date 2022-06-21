@@ -1,10 +1,10 @@
 class PlaneDisp extends eui.Component{
-	private curSpin:-1|0|1
+	private curSpin:number
 	
 	/**
-	 * @param type 机体类型 0：玩家 1：杂兵 2：精英
+	 * @param type 机体类型 0：玩家 1：杂兵,2:强力杂兵,  3：精英
 	 */
-	public constructor(type:0|1|2) {
+	public constructor(type:number) {
 		super()
 		switch(type){
 			case 0:
@@ -14,6 +14,9 @@ class PlaneDisp extends eui.Component{
 			this.skinName = 'resource/eui_skins/enemyPlane.exml'
 			break
 			case 2:
+			this.skinName = 'resource/eui_skins/elitePlane.exml'
+			break
+			case 3:
 			this.skinName = 'resource/eui_skins/extremeplane.exml'
 			break
 
@@ -21,7 +24,7 @@ class PlaneDisp extends eui.Component{
 		
 	}
 
-	public setSpinState(spin:-1|0|1){
+	public setSpinState(spin:number){
 		if(spin == this.curSpin) return 
 		this.curSpin = spin
 		switch(spin){

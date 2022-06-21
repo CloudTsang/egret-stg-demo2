@@ -24,10 +24,10 @@ class BasePlane extends BaseCharacter{
     protected _collisionPoints:egret.Point[]   
     protected moveData:MoveData  
     /**速度档次：慢中快*/  
-    protected gears:number[] = [8, 10, 15]
+    public gears:number[] = [8, 10, 15]
     protected curGear:number = 1
 
-    protected MAP_SIZE:number = StageScene.MAP_SIZE
+    protected MAP_SIZE:number = WorldData.MAP_SIZE
     /**间隔多少次移动指令检测一次越界 */
     protected checkOverBorderCount:number = 0
     protected readonly maxCheckOverBorderCount:number = 10

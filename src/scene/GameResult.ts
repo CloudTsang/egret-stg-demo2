@@ -42,9 +42,9 @@ class GameResult extends eui.Component{
 		// }
 		t.txt_hit.text = t._hit + '次';
 		t.txt_bullet.text = t._bullet + '颗';
-		t.txt_defeat.text = t._defeat + '分'
+		t.txt_defeat.text = t._defeat + '分';
 		
-
+		
 		let sec = t._time;
 		let min = Math.floor(sec/60);
 		if(min == 0){

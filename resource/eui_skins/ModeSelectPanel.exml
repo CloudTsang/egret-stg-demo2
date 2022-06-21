@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.ModeSelectPanel"
+	 width="400"
+	height="500" xmlns:e="http://ns.egret.com/eui">
+	<e:Group percentHeight="100" percentWidth="100">
+		<e:Button id="btnMode1" label="限时模式" x="123" y="77" width="300" height="100"/>
+		<e:Label text="在5分钟内击落尽可能多敌机" x="247" y="199" size="30"/>
+		<e:Group width="0" height="20"/>
+		<e:Button id="btnMode2" label="生存模式" x="162" y="210" width="300" height="100"/>
+		<e:Label text="游戏直到被击落为止" x="203" y="231" size="30"/>
+        <e:Group width="0" height="20"/>
+		<e:Button id="btnMode3" label="练习模式" x="162" y="251" width="300" height="100"/>
+		<e:Label text="击落随机分布的10个标靶" x="168" y="278" size="30"/>
+        <e:Group width="0" height="20"/>
+		<e:layout>
+			<e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+		</e:layout>
+	</e:Group>
+	
+</e:Skin>

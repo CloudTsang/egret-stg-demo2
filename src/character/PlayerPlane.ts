@@ -3,11 +3,14 @@ class PlayerPlane extends BasePlane{
     private _disp:PlaneDisp   
     public constructor(pw:number = 3, ph:number = 5){
         super()
-        this.maxHP = 5;
-        this.HP = 5;
+        //test
+        // this.maxHP = 999999
+        this.maxHP = 10;
+        this.HP = this.maxHP;
         this.pWidth = pw;
         this.pHeight = ph;
         this.pColor = 0x00FF00;
+        this.gears = WorldData.SPEED.PlayerPlane
         this.draw();     
         this.barrier.energy = 100
         
@@ -28,7 +31,7 @@ class PlayerPlane extends BasePlane{
         t._disp = disp
     }
 
-     public move(boot:-1|0|1,spin:-1|0|1){
+    public move(boot:-1|0|1,spin:-1|0|1){
          super.move(boot, spin)
          this._disp.setSpinState(spin)
     }

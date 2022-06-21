@@ -11,7 +11,7 @@
 		<e:Group width="0" height="30" x="294" y="277"/>
         <e:Label text="游戏目标" x="365" y="340" size="60" />
         <e:Group width="0" height="30" x="246" y="381" />
-		<e:Label percentWidth="90" text="驾驶战机在3分钟内躲避或防御敌机的子弹并击落尽可能多的敌机以获取更高的分数。注意拾取宝箱道具来获得强化。" x="292" y="498" size="45" wordWrap="true" multiline="true"/>
+		<e:Label percentWidth="90" text="驾驶战机躲避或防御敌机的子弹并击落尽可能多的敌机以获取更高的分数。注意拾取宝箱道具来获得强化。" x="292" y="498" size="45" wordWrap="true" multiline="true"/>
 
     </e:Group>
 	<e:Group percentWidth="100" percentHeight="100" includeIn="p4" >

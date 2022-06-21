@@ -10,6 +10,7 @@ class ControlPanel extends eui.Component{
 	private _stageAnalogY:number = 0;
 
 	public barrier_gauge:BarrierGauge;
+	public hp_gauge:HPGauge
 
 	public onDirectChange:(x:-1|0|1, y:-1|0|1)=>void
 	public onKeyDown:(e:{keyCode:Keyboard})=>void
@@ -40,6 +41,9 @@ class ControlPanel extends eui.Component{
 
 		t.barrier_gauge.x = t.btn_barrier.x
 		t.barrier_gauge.width = t.btn_barrier.width
+
+		t.hp_gauge.x = t.btn_barrier.x
+		t.hp_gauge.width = t.btn_barrier.width
 
 		t.btn_barrier.addEventListener(egret.TouchEvent.TOUCH_TAP, t.onPressBarrier, t)
 	}

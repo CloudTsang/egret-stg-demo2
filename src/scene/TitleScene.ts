@@ -1,6 +1,7 @@
 class TitleScene  extends egret.Sprite
 {
 	private _descript: DescriptionPage
+	private _msPanel:ModeSelectPanel
 	private _startBtn: eui.Button;
 	private _desBtn:eui.Button;
 	private _stage = egret.MainContext.instance.stage;
@@ -24,7 +25,7 @@ class TitleScene  extends egret.Sprite
 		sbtn.x = (this.width - sbtn.width)/2;
 		sbtn.y = this.height - 350;
 		this.addChild(sbtn);
-		sbtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStart, this)
+		sbtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.modeSelect, this)
 		this._startBtn = sbtn
 
 		const dbtn = this.createBtn("游戏说明")
@@ -38,7 +39,20 @@ class TitleScene  extends egret.Sprite
 	}
 
 	private gameStart(e:any){
-		this.dispatchEvent(new egret.Event(PlayEvents.START))
+		this.dispatchEvent(e)
+	}
+
+	private modeSelect(e:any){
+		const t = this
+		t.removeChild(t._startBtn)
+		t.removeChild(t._desBtn)
+
+		const msp = new ModeSelectPanel()
+		msp.x = (t.width - msp.width)/2
+		msp.y = t.height - msp.height
+		t.addChild(msp)
+		t._msPanel = msp
+		msp.once(PlayEvents.START, t.gameStart, t)
 	}
 
 	public openDescript(e:any){

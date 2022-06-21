@@ -37,4 +37,5 @@
 		</e:Group>
 	</e:Group>
 	<ns1:BarrierGauge id="barrier_gauge" width="200" height="30" x="601" y="-83"/>
+	<ns1:HPGauge id="hp_gauge" width="200" height="30" x="601" y="-134"/>
 </e:Skin>

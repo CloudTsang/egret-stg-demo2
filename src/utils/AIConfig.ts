@@ -70,13 +70,13 @@ class AIConfig {
 					}
 					t.resetTimeCounter()
 					aiRefreshed = t.p0Test()
-					console.log("刷新移动策略 ： ", t.positionData.tgt, t.aicfg)
+					// console.log("刷新移动策略 ： ", t.positionData.tgt, t.aicfg)
 				}
 			break
 			case 1:
 				t.phraseTimeCounter --
 				if(t.phraseTimeCounter <= 0){
-					console.log("移动阶段结束")
+					// console.log("移动阶段结束")
 					t.resetAI()
 					t.phrase = 0
 					return t.aicfg

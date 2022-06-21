@@ -14,5 +14,5 @@
 		<e:Label text="击破分数：" x="55" y="378"/>
 		<e:Label id="txt_defeat" x="241" y="378"/>
 	</e:Group>
-	<e:Button id="btn_retry" label="再玩" x="219.323" y="696.659" width="170.902" height="66.683"/>
+	<e:Button id="btn_retry" label="返回" x="219.323" y="696.659" width="170.902" height="66.683"/>
 </e:Skin>

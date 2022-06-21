@@ -1,0 +1,38 @@
+{
+    "projectName": "sheet",
+    "files": [
+        "./jetp.png",
+        "./jet.png",
+        "./drift.png",
+        "./clouds.png",
+        "./bullet.png",
+        "./buff.png",
+        "./btn_bullet.png",
+        "./blast.png",
+        "./barrier.png",
+        "./analog.png",
+        "./tgt.png",
+        "./radar.png",
+        "./plane5spin2.png",
+        "./plane5spin.png",
+        "./plane5.png",
+        "./plane4spin2.png",
+        "./plane4spin.png",
+        "./plane4.png",
+        "./plane3spin2.png",
+        "./plane3spin.png",
+        "./plane3.png",
+        "./plane2.png",
+        "./plane1spin2.png",
+        "./plane1spin.png",
+        "./plane1.png"
+    ],
+    "options": {
+        "layoutMath": "3",
+        "sizeMode": "free",
+        "useExtension": 0,
+        "layoutGap": 2,
+        "extend": 0
+    },
+    "version": 5
+}

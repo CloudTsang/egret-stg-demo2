@@ -12,6 +12,7 @@ class BigBulletBuff extends Buff{
 			owner.bulletGenerator = EnemyBulletLV2.pool
 			owner.bulletRange = EnemyBulletLV2.range
 		}
+		super.startEffect(owner)
 		// Bullet.allArr = []
 	}
 

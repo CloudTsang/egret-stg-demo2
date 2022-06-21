@@ -2,7 +2,7 @@
 class BulletLV2 extends Bullet{	
 	public static range = 3000
 	public constructor() {
-		super(15, 0xFFD700, 0, 40, BulletLV2.range);
+		super(30, 0xFFD700, 0, 40, BulletLV2.range);
 		this._barrierDamage = 20  
 	}
 
@@ -10,7 +10,7 @@ class BulletLV2 extends Bullet{
 		let bmp = new egret.Bitmap();		
 		bmp.texture = RES.getRes('sheet_json#bullet');
 		bmp.width = this.size*2;
-		bmp.height = this.size*2;
+		bmp.height = this.size*3;
 		bmp.x = -this.size
 		bmp.y = -this.size;
 		this.addChild(bmp);		

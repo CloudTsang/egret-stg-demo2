@@ -23,7 +23,7 @@ class Bullet extends CollisionObject implements IPoolObject{
 	
 	public static range = 2000
 
-	public constructor(size=10, color=0xFFFACD, rot:number=0, spd:number=40, distance:number=Bullet.range) {
+	public constructor(size=20, color=0xFFFACD, rot:number=0, spd:number=40, distance:number=Bullet.range) {
 		super()
 		this.size = size;
 		this.color = color;
@@ -42,6 +42,7 @@ class Bullet extends CollisionObject implements IPoolObject{
 	public setDirection(rot:number=0, spd=-1){
 		if(spd == -1) spd = this.moveData.speed
 		this.moveData.setData(rot,spd)
+		this.rotation = rot
 	}
 
 	public shoot(){	
@@ -78,12 +79,17 @@ class Bullet extends CollisionObject implements IPoolObject{
 	}
 
 	protected draw(){
+		const size = this.size
+		const size2 = size*1.5
 		let sp = new egret.Sprite();		
 		sp.graphics.beginFill(this.color);
-		sp.graphics.drawCircle(0,0, this.size);
+		// sp.graphics.drawCircle(0,0, this.size);
+		sp.graphics.moveTo(size/2, 0)
+		sp.graphics.lineTo(size, size2)
+		sp.graphics.lineTo(0, size2)
 		sp.graphics.endFill();			
-		sp.x = -this.size/2
-		sp.y = -this.size/2
+		sp.x = -size/2
+		sp.y = -size/2
 		this.addChild(sp)
 		this._sp = sp;	
 		this._sp.visible = true;	

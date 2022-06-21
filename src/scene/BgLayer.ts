@@ -114,6 +114,11 @@ class BgLayer extends egret.Sprite{
 	public addChild(child: egret.DisplayObject): egret.DisplayObject{
         return this._layer.addChild(child)
     }
+
+	public dispose(){
+		this.removeChildren()
+		this.parent && this.parent.removeChild(this)
+	}
 	
 }
 

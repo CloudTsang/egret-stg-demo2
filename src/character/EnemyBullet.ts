@@ -2,7 +2,7 @@
 class EnemyBullet extends Bullet{
 	public static range = 2000	
 	public constructor() {		
-		super(12, 0xC71585, 0, 25, EnemyBullet.range);
+		super(20, 0xC71585, 0, 25, EnemyBullet.range);
 	}
 
 	public static pool:Pool<EnemyBullet> = new Pool<EnemyBullet>(()=>{

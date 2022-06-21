@@ -16,6 +16,14 @@ class PlayEvents{
 
     public static readonly OVER_BORDER = 'OVER_BORDER';
     public static readonly CLOSE_DESCRIPT = 'CLOSE_DESCRIPT';
+
+    public static readonly BACK_2_TITLE = 'BACK_2_TITLE'
+}
+
+enum GameMode{
+    TIME_ATTACK,
+    INFINITE,
+    PRACTICE
 }
 
 enum AIType{
@@ -64,6 +72,10 @@ enum BuffType{
     INF_DASH, 
     /**冲刺无敌 */
     DASH_INVINS, 
+    /**加速 */
+    HIGH_SPEED,
+    /**HP回复 */
+    HP_RECOVER,
 }
 
 class Keyboard{

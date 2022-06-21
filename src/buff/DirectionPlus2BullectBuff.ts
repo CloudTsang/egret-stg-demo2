@@ -10,6 +10,7 @@ class DirectionPlus2BullectBuff extends Buff {
 		}else if(owner.bulletDirections.length == 3){
 			owner.bulletDirections = [-135, -45, 0, 45, 135]
 		}
+		super.startEffect(owner)
 	}
 
 	public delBuff(e:any=null){

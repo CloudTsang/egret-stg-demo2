@@ -36,7 +36,11 @@ class Drift extends BaseCharacter{
 		if(!ty){
 			let arr = [
 						BuffType.BULLET_BOOST_BIG,
-						//BuffType.BULLECT_BOOST_PLUS2DIRECT,
+						BuffType.BULLECT_BOOST_PLUS2DIRECT,
+						BuffType.BARRIER,
+						BuffType.HIGH_SPEED,
+						BuffType.HP_RECOVER,
+						
 						//BuffType.INVINSIBLE,
 						//BuffType.SUB_PLANE
 						]

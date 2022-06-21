@@ -59,6 +59,9 @@ class Radar extends egret.Sprite{
 		if(obj instanceof BasePlane){
 			shp = t.drawEnemey()
 		}
+		else if(obj instanceof DummyTgt){
+			shp = t.drawEnemey() 
+		}
 		else if(obj instanceof Drift){
 			shp = t.drawDrift()
 		}
@@ -96,10 +99,6 @@ class Radar extends egret.Sprite{
 		const p1 = player.position
 		const p2 = obj.position
 		const d = egret.Point.distance(p1, p2)
-		if(d > this._distance){
-			shp.visible = false
-			return -1
-		}
 		const sin = (p2.x-p1.x)/d
 		const cos = (p2.y-p1.y)/d
 		const nx = sin*radarR
