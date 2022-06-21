@@ -35,7 +35,8 @@ class PracticeScene  extends BasePlayScene{
     private initTgt(){
         const t = this
         t._enemy = []
-        for(let i=0; i<1; i++){
+        //test
+        for(let i=0; i<10; i++){
             const tgt = new DummyTgt()
             tgt.x = Math.random()*(WorldData.MAP_SIZE - 200) + 100
             tgt.y = Math.random()*(WorldData.MAP_SIZE - 200) + 100

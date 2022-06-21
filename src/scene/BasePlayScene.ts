@@ -125,7 +125,7 @@ class BasePlayScene  extends egret.Sprite{
 	}
 
     protected initRadar(){
-        const radar = new Radar(200,10)
+        const radar = new Radar(200,30)
         this.addChild(radar)
         this._radar = radar
     }

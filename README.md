@@ -67,4 +67,17 @@ protected angleCalc(){
 }
 ```
 
+此外还遇到个奇怪的问题
+
+当把WorldData.ts中的地图尺寸调大到10000时（实际从5400开始就出现这个问题），
+```
+public static MAP_SIZE:number = 10000;
+```
+
+Radar.ts中不加这三行代码，雷达上的小点便显示不出来，并且把beginFill的alpha参数改为1也不会出现黑色方框。不知道是egret的什么显示机制
+```
+layer.graphics.beginFill(0x000000, 0)
+layer.graphics.drawRect(0,0,layer.width,layer.height)
+layer.graphics.endFill()
+```
 

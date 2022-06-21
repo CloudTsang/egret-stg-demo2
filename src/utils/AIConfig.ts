@@ -247,6 +247,7 @@ class AIConfig {
 			}else if(t.positionData.angle <= t.startShotAngle) {
 				// console.log("开始射击")
 				shot = AI_Shot.FIRE
+				speed = AI_Speed.NORMAL
 				rotation = AI_Rotation.STRAIGHT
 			}
 			else{

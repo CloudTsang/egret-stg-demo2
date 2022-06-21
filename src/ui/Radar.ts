@@ -4,13 +4,9 @@ class Radar extends egret.Sprite{
 	private _objs:CollisionObject[]
 	private _radarObjs:egret.Shape[]
 	private _layer:egret.Sprite
-	private _distance:number
 	private RADAR_OBJ_R:number = 10
 	
-	/**
-	 * @param distance 距离超过该值的对象不显示在雷达上
-	 */
-	public constructor(x:number, y:number, r:number=75, distance:number=3000) {
+	public constructor(x:number, y:number, r:number=75) {
 		super()
 		const d = r * 2
 		this.x = x - d
@@ -18,7 +14,6 @@ class Radar extends egret.Sprite{
 		this.width = d
 		this.height = d 
 		this._r = r
-		this._distance = distance
 		this._objs = []
 		this._radarObjs = []
 		this.draw()
@@ -43,6 +38,11 @@ class Radar extends egret.Sprite{
 		layer.y = layer.height/2
 		layer.anchorOffsetX = layer.x
 		layer.anchorOffsetY = layer.y
+
+		layer.graphics.beginFill(0x000000, 0)
+		layer.graphics.drawRect(0,0,layer.width,layer.height)
+		layer.graphics.endFill()
+
 		this._layer = layer
 		this.addChild(layer)
 
@@ -103,9 +103,8 @@ class Radar extends egret.Sprite{
 		const cos = (p2.y-p1.y)/d
 		const nx = sin*radarR
 		const ny = cos*radarR
-		shp.x = radarR + nx + radarObjR
-		shp.y = radarR + ny + radarObjR
-		shp.visible = true
+		shp.x = Math.floor(radarR + nx + radarObjR)
+		shp.y = Math.floor(radarR + ny + radarObjR)
 		return 1
 	}
 
@@ -116,7 +115,6 @@ class Radar extends egret.Sprite{
 		shp.graphics.drawCircle(-r,-r, r)
 		shp.graphics.endFill()
 		shp.cacheAsBitmap = true
-		
 		return shp
 	}
 

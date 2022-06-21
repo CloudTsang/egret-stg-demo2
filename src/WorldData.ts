@@ -7,7 +7,7 @@ class WorldData {
 	public static PLANE_WIDTH:number = 20
 	public static PLANE_HEIGHT:number = 35
 
-	public static MAP_SIZE:number = 10000
+	public static MAP_SIZE:number = 10000;
 
 	public static SPEED:any = {
 		PlayerPlane: [6, 12, 18],
