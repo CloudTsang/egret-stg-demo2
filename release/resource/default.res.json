@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "border_png,header_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,description_json,title_mp3,blast_json,elite_mp3,extreme_mp3,normal_mp3,sheet_json,bgcell2_png,blast_png,explode_mp3,hit_mp3,thumb_pb_hp_png,item_mp3",
+			"keys": "border_png,header_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,description_json,title_mp3,blast_json,elite_mp3,extreme_mp3,normal_mp3,sheet_json,bgcell2_png,blast_png,explode_mp3,hit_mp3,thumb_pb_hp_png,item_mp3,plane_json",
 			"name": "preload"
 		}
 	],
@@ -101,6 +101,12 @@
 			"name": "item_mp3",
 			"type": "sound",
 			"url": "assets/item.mp3"
+		},
+		{
+			"name": "plane_json",
+			"type": "sheet",
+			"url": "assets/plane.json",
+			"subkeys": "plane5spin2,plane3,plane3spin,plane3spin2,plane4,plane4spin,plane4spin2,plane5,plane5spin"
 		}
 	]
 }

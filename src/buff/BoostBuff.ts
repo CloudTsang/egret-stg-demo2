@@ -1,5 +1,6 @@
 class BoostBuff  extends Buff{
 	private _add:number = 8
+	private _jet:egret.Bitmap
 	public constructor(duration:number = 20000) {
 		super(BuffType.HIGH_SPEED, duration, "S")		
 	}
@@ -13,6 +14,13 @@ class BoostBuff  extends Buff{
 		if(this.timer){
 			this.timer.start();
 		}
+		const jetp = this.creatBmp()
+		jetp.width = owner.width * 0.2
+		jetp.height = jetp.width * 4
+		owner.addChild(jetp)
+		jetp.x = - jetp.width/2
+		jetp.y = jetp.height * 0.3
+		this._jet = jetp
 	}
 
 	public delBuff(e:any=null){
@@ -22,6 +30,14 @@ class BoostBuff  extends Buff{
 		for(let i=0; i<p.gears.length; i++){
 			p.gears[i] -= tmp
 		}
+		if(this._jet && this._jet.parent){
+			this._jet.parent.removeChild(this._jet)
+		}
 		super.delBuff(e)
+	}
+
+	private creatBmp(){
+		let bmp = new egret.Bitmap(RES.getRes('sheet_json#jetp'))
+		return bmp
 	}
 }

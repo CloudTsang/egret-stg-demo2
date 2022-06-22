@@ -33,6 +33,7 @@ class BgLayer extends egret.Sprite{
 		bmp.fillMode = egret.BitmapFillMode.REPEAT
         bmp.width = size;
         bmp.height = size;
+		bmp.cacheAsBitmap = true
 
 		let layer = new egret.Sprite()
 		layer.width = size

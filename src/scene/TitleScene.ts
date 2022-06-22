@@ -89,6 +89,7 @@ class TitleScene  extends egret.Sprite
 	}
 
 	public dispose(){
+		
 		this.removeChildren()
 		this.parent.removeChild(this)
 	}

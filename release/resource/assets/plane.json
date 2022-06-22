@@ -1,0 +1,10 @@
+{"file":"plane.png","frames":{
+"plane5spin2":{"x":1070,"y":1148,"w":531,"h":570,"offX":69,"offY":31,"sourceW":630,"sourceH":630},
+"plane3":{"x":1148,"y":0,"w":570,"h":570,"offX":30,"offY":30,"sourceW":630,"sourceH":630},
+"plane3spin":{"x":0,"y":1148,"w":531,"h":570,"offX":69,"offY":31,"sourceW":630,"sourceH":630},
+"plane3spin2":{"x":1070,"y":574,"w":531,"h":570,"offX":69,"offY":31,"sourceW":630,"sourceH":630},
+"plane4":{"x":574,"y":0,"w":570,"h":570,"offX":30,"offY":30,"sourceW":630,"sourceH":630},
+"plane4spin":{"x":0,"y":574,"w":531,"h":570,"offX":69,"offY":31,"sourceW":630,"sourceH":630},
+"plane4spin2":{"x":535,"y":1148,"w":531,"h":570,"offX":69,"offY":31,"sourceW":630,"sourceH":630},
+"plane5":{"x":0,"y":0,"w":570,"h":570,"offX":30,"offY":30,"sourceW":630,"sourceH":630},
+"plane5spin":{"x":535,"y":574,"w":531,"h":570,"offX":69,"offY":31,"sourceW":630,"sourceH":630}}}
