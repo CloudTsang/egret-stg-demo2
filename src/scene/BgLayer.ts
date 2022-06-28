@@ -13,35 +13,26 @@ class BgLayer extends egret.Sprite{
 	private _oriPos:egret.Point
 	private _stage = egret.MainContext.instance.stage;
 
-	/**边界宽度 */
-	// private _borderSpanX:number
-	// private _borderSpanY:number
-	// private _halfStageW:number
-	// private _halfStageH:number
-	// private _overBorder:boolean
-
-
 	public constructor(size:number, stagew:number, stageh:number) {
 		super()
-		this.graphics.lineStyle(50, 0xFF0000, 0.6)
-		this.graphics.beginFill(0x00FF00)
-		this.graphics.drawRect(0,0,size,size)
-		this.graphics.endFill()
+		// this.graphics.lineStyle(50, 0xFF0000, 0.6)
+		// this.graphics.beginFill(0x00FF00)
+		// this.graphics.drawRect(0,0,size,size)
+		// this.graphics.endFill()
 		
 		let tex:egret.Texture = RES.getRes('bgcell2_png');
+		
 		let bmp:egret.Bitmap = new egret.Bitmap(tex);
 		bmp.fillMode = egret.BitmapFillMode.REPEAT
         bmp.width = size;
         bmp.height = size;
-		bmp.cacheAsBitmap = true
 
 		let layer = new egret.Sprite()
 		layer.width = size
 		layer.height = size
-		// layer.x = size/2
-		// layer.y = size/2
-		layer.addChild(bmp)
 		this._layer = layer
+
+		layer.addChild(bmp)
 		
 		this.anchorOffsetX = size/2
 		this.anchorOffsetY = size/2
@@ -50,38 +41,20 @@ class BgLayer extends egret.Sprite{
 		this.y = stageh/2
 		this._oriPos = new egret.Point(this.x, this.y)
 
-		// this._halfStageW = this.x
-		// this._halfStageH = this.y
-		// const tmp = -10
-		// this._borderSpanX = this.anchorOffsetX //- this.x + tmp
-		// this._borderSpanY = this.anchorOffsetY //- this.y + tmp
-		// this._overBorder = false
-
-		// layer.anchorOffsetX = size/2
-		// layer.anchorOffsetY = size/2
 		super.addChild(layer)
-
-		// const p = new egret.Shape()
-		// p.graphics.beginFill(0xFF0000)
-		// p.graphics.drawCircle(0,0, 50)
-		// p.graphics.endFill()
-		// layer.addChild(p)
-
-		// const p2 = new egret.Shape()
-		// p2.graphics.beginFill(0x00FF00)
-		// p2.graphics.drawCircle(this.anchorOffsetX,this.anchorOffsetX, 25)
-		// p2.graphics.endFill()
-		// super.addChild(p2)
-
 
 		const ctex = RES.getRes('clouds_png') as egret.Texture
 		const cbmp = new egret.Bitmap(ctex)
 		cbmp.fillMode = egret.BitmapFillMode.REPEAT
         cbmp.width = size;
         cbmp.height = size;
-		cbmp.alpha = 0.8
+		cbmp.alpha = 0.7
 		super.addChild(cbmp)
 		this._clouds = cbmp
+	}
+
+	private createBmp(){
+
 	}
 
 	public resetPosition(){
@@ -109,6 +82,7 @@ class BgLayer extends egret.Sprite{
 	}
 
 	public addGameObj(child:egret.DisplayObject){
+		// super.addChildAt(child, this._clouds?this.numChildren-1:this.numChildren)
 		super.addChildAt(child, this.numChildren-1)
 	}
 

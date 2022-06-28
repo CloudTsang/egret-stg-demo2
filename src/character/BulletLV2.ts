@@ -2,7 +2,7 @@
 class BulletLV2 extends Bullet{	
 	public static range = 3000
 	public constructor() {
-		super(30, 0xFFD700, 0, 40, BulletLV2.range);
+		super(30, 0xFFD700, 0, 32, BulletLV2.range);
 		this._barrierDamage = 20  
 	}
 

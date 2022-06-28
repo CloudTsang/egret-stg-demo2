@@ -2,12 +2,13 @@ class PlayEvents{
     public static readonly BUFF_GAIN = 'BUFF_GAIN';
     public static readonly BUFF_LOSE = 'BUFF_LOSE';
     public static readonly PLAYER_SHOT = 'PLAYER_SHOT';
-    public static readonly RECYCLEABLE = 'RECYCLEABLE';       
+    public static readonly RECYCLEABLE = 'RECYCLEABLE';  
+    public static readonly CLEAN_ENEMY = 'CLEAN_ENEMY';
     
     public static readonly DRIFT_MISS = 'DRIFT_MISS';
     public static readonly DRIFT_BREAK = 'DRIFT_BREAK';
     public static readonly DRIFT_GET = 'DRIFT_GET';
-
+   
     public static readonly START = 'START';
     public static readonly RETRY = 'RETRY';
     public static readonly CLEAR = 'CLEAR';
@@ -76,6 +77,10 @@ enum BuffType{
     HIGH_SPEED,
     /**HP回复 */
     HP_RECOVER,
+    /**清场 */
+    CLEAN_ENEMY,
+    /**敌机失误 */
+    CONFUSE_ENEMY,
 }
 
 class Keyboard{

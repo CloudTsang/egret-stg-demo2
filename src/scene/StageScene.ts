@@ -21,7 +21,6 @@ class StageScene  extends BasePlayScene{
 
 	public async startPlay(){
         const t = this
-
         t._playerBullet = 0
         t._playerHit = 0
         t._defeatEnemy = 0
@@ -35,7 +34,6 @@ class StageScene  extends BasePlayScene{
 
         t.initRadar()  
 		await t.initPlayer();
-        // await t.createEnemy();
         t.startCreateEnemy()
         t.createDrift()
         t.initUI()
@@ -123,6 +121,7 @@ class StageScene  extends BasePlayScene{
             enemy.x = ex
             enemy.y = ey
             enemy.boot()
+            enemy.aiDelay(i*2)
             enemy.addEventListener(PlayEvents.OVER_BORDER, this.onOverBorder, this)
             enemy.refreshPosition()
             t._bgLayer.addGameObj(enemy)
@@ -367,7 +366,7 @@ class StageScene  extends BasePlayScene{
     protected refreshAllPosition(){
         const scene = this
         scene._player && scene._player.refreshPosition();
-
+        // console.log('refreshAllPosition')
         for(let e0 of scene._enemy){
             let e = e0 as EnemyPlane
             //test
@@ -482,6 +481,68 @@ class StageScene  extends BasePlayScene{
         }catch(e){
             console.log(e);
         }
+    }
+
+    protected onPlayerGetBuff(e:egret.Event){
+        switch(e.data.ty){
+            case BuffType.CLEAN_ENEMY:
+                this.cleanEnemy()
+                break
+            case BuffType.CONFUSE_ENEMY:
+                this.confuseEnemy()
+                break
+        }
+    }
+
+    protected onPlayerLoseBuff(e:egret.Event){
+        switch(e.data.ty){
+            case BuffType.CONFUSE_ENEMY:
+                this.unconfuseEnemy()
+            break
+        }
+    }
+
+    protected cleanEnemy(){
+        const scene = this
+        SoundManager.instance().playBgs("explode_mp3")
+        for(let i=0; i<scene._enemy.length; i++){
+            let e = scene._enemy[i];     
+            e.crash();
+            e.removeEventListener(PlayEvents.OVER_BORDER, scene.onOverBorder, scene)
+            scene._score += e.score
+            scene._radar.removeObject(e)
+            scene._defeatEnemy ++   
+        }  
+        scene._enemy = []
+        let mask = new egret.Sprite()
+        mask.graphics.beginFill(0xFF0000)
+        mask.graphics.drawRect(0, 0, scene.width, scene.height)
+        mask.graphics.endFill()
+        mask.alpha = 0
+        scene.addChild(mask)
+        egret.Tween.get(mask)
+        .to({alpha:0.5}, 250)
+        .to({alpha:0},250)
+        .call(()=>{
+            mask.parent && mask.parent.removeChild(mask)
+            mask = null
+        })
+    }
+
+    protected confuseEnemy(){
+        const scene = this
+        for(let i=0; i<scene._enemy.length; i++){
+            let e = scene._enemy[i]; 
+            e.confuseAI(true)    
+        } 
+    }
+
+    protected unconfuseEnemy(){
+        const scene = this
+        for(let i=0; i<scene._enemy.length; i++){
+            let e = scene._enemy[i]; 
+            e.confuseAI(false)    
+        } 
     }
 
     protected pause(){

@@ -7,6 +7,8 @@ class EnemyPlane extends BasePlane{
 
 	protected _rotationDirection:number
 	protected _type:number = 1
+
+	protected lockAI:boolean = false
 	
 	/** 敌方机体 
 	 * @param apear 从哪个方向出现
@@ -36,6 +38,11 @@ class EnemyPlane extends BasePlane{
         this.moveData.setData(this.rotation, this.speed)
 		this.aiCfg = new AIConfig(this); 
     }
+
+	/**同时生成复数个敌机时，设置delay错开ai计算的时间 */
+	public aiDelay(n:number){
+		this.aiCfg.delay(n)
+	}
 
 	public shot(){
 		if(this.shotTimer.running){
@@ -100,49 +107,60 @@ class EnemyPlane extends BasePlane{
 
 	public refreshAI(player:BasePlane, drifts:Drift[]){
 		const t = this
+		if(t.lockAI) return
 		const v = t.aiCfg.refreshAI(player, drifts)
 		if(!v) {
 			return //没有变化
 		}
 		let des = ''
 		if(v.shot == AI_Shot.FIRE){
-			des += '开始射击,'
+			// des += '开始射击,'
 			t.shot()
 		}else{
-			des += "停止射击,"
+			// des += "停止射击,"
 			t.stop()
 		}
 
 		switch(v.speed){
 			case AI_Speed.NORMAL:
-			des += "平速,"
+			// des += "平速,"
 			t.curGear = 1
 			break
 			case AI_Speed.FAST:
-			des += "加速,"
+			// des += "加速,"
 			t.curGear = 2
 			break
 			case AI_Speed.SLOW:
-			des += "减速,"
+			// des += "减速,"
 			t.curGear = 0
 			break
 		}
 
 		switch(v.rotation){
 			case AI_Rotation.MINUS:
-			des += "逆时针,"
+			// des += "逆时针,"
 			t._rotationDirection = -1
 			break
 			case AI_Rotation.STRAIGHT:
-			des += "直线,"
+			// des += "直线,"
 			t._rotationDirection = 0
 			break
 			case AI_Rotation.PLUS:
-			des += "顺时针,"
+			// des += "顺时针,"
 			t._rotationDirection = 1
 			break
 		}
 		
+	}
+
+	public confuseAI(v:boolean){
+		const t = this
+		if(v){
+			t.stop()
+			t.curGear = 0
+			t._rotationDirection = 1
+		}
+		t.lockAI = v
 	}
 
 	public crash(){        

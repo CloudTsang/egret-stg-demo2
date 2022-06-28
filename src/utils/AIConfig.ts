@@ -55,6 +55,10 @@ class AIConfig {
 		this.timeCounter = 0
 	}	
 
+	public delay(t:number){
+		this.timeCounter += t
+	}
+
 	public refreshAI(player:BasePlane, drifts:Drift[]):IAiAct{
 		const t = this
 		let aiRefreshed:IAiResult = {nextAct:false, nextPhrase:false}
@@ -65,6 +69,7 @@ class AIConfig {
 			case 0:
 				t.timeCounter --
 				if(t.timeCounter<=0){
+					// console.log('refreshAI : ', t.plane)
 					if(t.driftFirst){
 						t.targetCalc(player, drifts)
 					}

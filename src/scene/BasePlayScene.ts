@@ -41,10 +41,13 @@ class BasePlayScene  extends egret.Sprite{
             this.y += 300 
         }
         
-
         this._bgLayer = new BgLayer(WorldData.MAP_SIZE, this.width, this.height)
         this._bgLayer.addEventListener(PlayEvents.OVER_BORDER, this.onOverBorder, this)
         // window['layer'] = this._bgLayer
+        //test
+        // this._bgLayer.scaleX = 5
+        // this._bgLayer.scaleY = 5
+
 
         const midx = this.width/2
         const midy = this.height/2
@@ -146,6 +149,8 @@ class BasePlayScene  extends egret.Sprite{
             this._playerBullet++
         }, this) 
         player.addEventListener(PlayEvents.OVER_BORDER, this.onOverBorder, this)
+        player.addEventListener(PlayEvents.BUFF_GAIN, this.onPlayerGetBuff, this)
+         player.addEventListener(PlayEvents.BUFF_LOSE, this.onPlayerLoseBuff, this)
         return new Promise((resolve, reject)=>{
             egret.Tween.get(player)
             .to({
@@ -219,6 +224,14 @@ class BasePlayScene  extends egret.Sprite{
 
             layer.setPosition(scene.mapSizeData.halfStageWidth - px, scene.mapSizeData.halfStageHeight - py)
         }
+    }
+
+    protected onPlayerGetBuff(e:egret.Event){
+        throw new Error("Function not implemented!")
+    }
+
+    protected onPlayerLoseBuff(e:egret.Event){
+        throw new Error("Function not implemented!")
     }
 
     public addChild(child: egret.DisplayObject): egret.DisplayObject{

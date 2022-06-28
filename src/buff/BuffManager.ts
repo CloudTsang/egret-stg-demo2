@@ -7,6 +7,7 @@ class BuffManager {
 	public barrierBuff:BarrierBuff;
 	public subPlaneBuff:SubPlaneBuff;
     public boostBuff:BoostBuff;
+    public confuseBuff:ConfuseBuff;
 	private _plane:BasePlane;
     private _buffNum:number;
 	public constructor(p:BasePlane) {
@@ -53,7 +54,19 @@ class BuffManager {
                     type:ty,
                     defaultDuration:-1,
                     label: "H"
-                }          
+                }    
+            case BuffType.CLEAN_ENEMY:
+                return {
+                    type:ty,
+                    defaultDuration:-1,
+                    label:'E'
+                }      
+            case BuffType.CONFUSE_ENEMY:
+                return {
+                    type:ty,
+                    defaultDuration: 20000,
+                    label: 'C'
+                }
         }
         return null
     }
@@ -101,6 +114,18 @@ class BuffManager {
             case BuffType.HP_RECOVER:
                 new HPBuff(duration).startEffect(t._plane)
                 return
+            case BuffType.CLEAN_ENEMY:
+                new ExplodeBuff(duration).startEffect(t._plane)
+                return
+            case BuffType.CONFUSE_ENEMY:
+                if(!(t._plane instanceof PlayerPlane)){
+                    return
+                }
+                if(!t.confuseBuff)t._buffNum ++
+                else t.confuseBuff.delBuff()
+                t.confuseBuff = new ConfuseBuff(duration)
+                buff = t.confuseBuff
+                break
         }
         if(!buff){
             return
@@ -133,6 +158,9 @@ class BuffManager {
             case BuffType.HIGH_SPEED:
                 this.boostBuff = null
                 break
+            case BuffType.CONFUSE_ENEMY:
+                this.confuseBuff = null
+                break
         }
         this._buffNum --
     }
@@ -161,6 +189,9 @@ class BuffManager {
             case BuffType.HIGH_SPEED:
                 this.boostBuff && this.boostBuff.delBuff()
                 break
+            case BuffType.CONFUSE_ENEMY:
+                this.confuseBuff && this.confuseBuff.delBuff()
+                break
         }
         this._buffNum ++
     }
@@ -175,6 +206,7 @@ class BuffManager {
         t.barrierBuff && t.barrierBuff.delBuff()
         t.subPlaneBuff && t.subPlaneBuff.delBuff()
         t.boostBuff && t.boostBuff.delBuff()
+        t.confuseBuff && t.confuseBuff.delBuff()
 
     }
 
@@ -186,7 +218,8 @@ class BuffManager {
         t.direction5BulletBuff && t.direction5BulletBuff.onPause()
         t.directionPlus2BullectBuff && t.directionPlus2BullectBuff.onPause()
         t.barrierBuff && t.barrierBuff.onPause()
-        t.subPlaneBuff && t.subPlaneBuff.onPause()         
+        t.subPlaneBuff && t.subPlaneBuff.onPause()   
+        t.confuseBuff && t.confuseBuff.onPause()      
     }
 
 
@@ -198,7 +231,8 @@ class BuffManager {
         t.direction5BulletBuff && t.direction5BulletBuff.onResume()
         t.directionPlus2BullectBuff && t.directionPlus2BullectBuff.onResume()
         t.barrierBuff && t.barrierBuff.onResume()
-        t.subPlaneBuff && t.subPlaneBuff.onResume()     
+        t.subPlaneBuff && t.subPlaneBuff.onResume()  
+        t.confuseBuff && t.confuseBuff.onResume()   
     }
 
     public get buffNum()

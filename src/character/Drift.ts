@@ -40,6 +40,8 @@ class Drift extends BaseCharacter{
 						BuffType.BARRIER,
 						BuffType.HIGH_SPEED,
 						BuffType.HP_RECOVER,
+						BuffType.CLEAN_ENEMY,
+						BuffType.CONFUSE_ENEMY,
 						
 						//BuffType.INVINSIBLE,
 						//BuffType.SUB_PLANE

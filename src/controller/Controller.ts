@@ -61,6 +61,9 @@ class Controller implements IController{
 		}				
 		switch(e.keyCode){
 			case Keyboard.Z: //射击
+				if(!this._shotTriggered){
+					this._controllee.shot();
+				}
 				this._shotTriggered = true;
 				break;
 			case Keyboard.X: //护盾

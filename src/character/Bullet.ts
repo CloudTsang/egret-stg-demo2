@@ -23,7 +23,7 @@ class Bullet extends CollisionObject implements IPoolObject{
 	
 	public static range = 2000
 
-	public constructor(size=20, color=0xFFFACD, rot:number=0, spd:number=40, distance:number=Bullet.range) {
+	public constructor(size=20, color=0xFFFACD, rot:number=0, spd:number=30, distance:number=Bullet.range) {
 		super()
 		this.size = size;
 		this.color = color;
