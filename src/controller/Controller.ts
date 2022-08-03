@@ -70,6 +70,7 @@ class Controller implements IController{
 				this._controllee.bootBarrier(!this._controllee.isBarrier)
 				break;
 			case Keyboard.C: //TODO:导弹
+				this._controllee.lauchMissle()
 				break;
 			case Keyboard.LEFT:
 				this._spinDirect = -1

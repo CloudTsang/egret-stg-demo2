@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "border_png,header_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,description_json,title_mp3,blast_json,elite_mp3,extreme_mp3,normal_mp3,sheet_json,bgcell2_png,blast_png,explode_mp3,hit_mp3,thumb_pb_hp_png,item_mp3,plane_json,clouds_png",
+			"keys": "border_png,header_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,description_json,title_mp3,blast_json,elite_mp3,extreme_mp3,normal_mp3,sheet_json,bgcell2_png,blast_png,explode_mp3,hit_mp3,thumb_pb_hp_png,item_mp3,plane_json,clouds_png,missle_json,blast2_png,blast2_json",
 			"name": "preload"
 		}
 	],
@@ -112,6 +112,21 @@
 			"name": "clouds_png",
 			"type": "image",
 			"url": "assets/clouds.png"
+		},
+		{
+			"name": "missle_json",
+			"type": "json",
+			"url": "assets/missle.json"
+		},
+		{
+			"name": "blast2_png",
+			"type": "image",
+			"url": "assets/blast2.png"
+		},
+		{
+			"name": "blast2_json",
+			"type": "json",
+			"url": "assets/blast2.json"
 		}
 	]
 }

@@ -1,4 +1,13 @@
-class EnemyPlane extends BasePlane{
+interface IDefeatable extends egret.IEventDispatcher{
+	score:number
+	position:egret.Point
+	hit(b:IWeapon)
+	hit2(d:number)
+	crash()
+	isDefeated():boolean
+}
+
+class EnemyPlane extends BasePlane implements IDefeatable{
 	public aiCfg:AIConfig;
 
 	protected _disp:PlaneDisp 
@@ -31,7 +40,7 @@ class EnemyPlane extends BasePlane{
 		this._rotationDirection = 0
 		this._score = 100
 		
-		this.rotation = apear		
+		this.rotation = apear
 	}
 
 	public boot(){
@@ -91,6 +100,14 @@ class EnemyPlane extends BasePlane{
         t._disp = disp
 	}
 
+	public get width(){
+		return this._disp.width
+	}
+
+	public get height(){
+		return this._disp.height
+	}
+
 	public refreshMove(){	
 		const p = this
 		// if(p._adjust)return
@@ -108,7 +125,7 @@ class EnemyPlane extends BasePlane{
 	public refreshAI(player:BasePlane, drifts:Drift[]){
 		const t = this
 		if(t.lockAI) return
-		const v = t.aiCfg.refreshAI(player, drifts)
+		let v = t.aiCfg.refreshAI(player, drifts)
 		if(!v) {
 			return //没有变化
 		}
@@ -165,6 +182,7 @@ class EnemyPlane extends BasePlane{
 
 	public crash(){        
 		this.stop();		
+		this.aiCfg.dispose()
 		super.crash();
     }  
 

@@ -1,6 +1,7 @@
 class DescriptionPage extends eui.Component{
 	private btn_next:eui.Button
 	private _curPage:number
+	private _maxPage:number = 5
 	public constructor() {
 		super()
 		this.touchEnabled = true
@@ -15,7 +16,7 @@ class DescriptionPage extends eui.Component{
 	}
 
 	private onNext(e:any){
-		if(this._curPage == 4){
+		if(this._curPage == this._maxPage){
 			this.dispatchEvent(new egret.Event(PlayEvents.CLOSE_DESCRIPT))
 			return
 		}

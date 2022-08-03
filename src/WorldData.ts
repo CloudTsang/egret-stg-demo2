@@ -12,6 +12,9 @@ class WorldData {
 
 	public static MAP_SIZE:number = 8000;
 
+	/**检测帧间隔 */
+	public static CHECK_INTERVAL:number = 2
+
 	public static SPEED:any = {
 		PlayerPlane: [6, 12, 18],
 		// PlayerPlane: [2, 3, 5],

@@ -8,6 +8,7 @@ class BuffManager {
 	public subPlaneBuff:SubPlaneBuff;
     public boostBuff:BoostBuff;
     public confuseBuff:ConfuseBuff;
+    public missleBuff:MissleBuff;
 	private _plane:BasePlane;
     private _buffNum:number;
 	public constructor(p:BasePlane) {
@@ -66,6 +67,12 @@ class BuffManager {
                     type:ty,
                     defaultDuration: 20000,
                     label: 'C'
+                }
+            case BuffType.MISSLE_BOOST:
+                return {
+                    type:ty,
+                    defaultDuration: 45000,
+                    label:"M"
                 }
         }
         return null
@@ -126,6 +133,16 @@ class BuffManager {
                 t.confuseBuff = new ConfuseBuff(duration)
                 buff = t.confuseBuff
                 break
+            case BuffType.MISSLE_BOOST:
+                if(!(t._plane instanceof PlayerPlane)){
+                    return
+                }
+                if(!t.missleBuff)t._buffNum ++
+                else t.missleBuff.delBuff()
+                t.missleBuff = new MissleBuff(duration)
+                buff = t.missleBuff
+                break
+
         }
         if(!buff){
             return
@@ -161,6 +178,9 @@ class BuffManager {
             case BuffType.CONFUSE_ENEMY:
                 this.confuseBuff = null
                 break
+            case BuffType.MISSLE_BOOST:
+                this.missleBuff = null
+                break
         }
         this._buffNum --
     }
@@ -192,8 +212,11 @@ class BuffManager {
             case BuffType.CONFUSE_ENEMY:
                 this.confuseBuff && this.confuseBuff.delBuff()
                 break
+            case BuffType.MISSLE_BOOST:
+                this.missleBuff && this.missleBuff.delBuff()
+                break
         }
-        this._buffNum ++
+        this._buffNum --
     }
 
     public dispose(){
@@ -207,6 +230,7 @@ class BuffManager {
         t.subPlaneBuff && t.subPlaneBuff.delBuff()
         t.boostBuff && t.boostBuff.delBuff()
         t.confuseBuff && t.confuseBuff.delBuff()
+        t.missleBuff && t.missleBuff.delBuff()
 
     }
 
@@ -219,7 +243,8 @@ class BuffManager {
         t.directionPlus2BullectBuff && t.directionPlus2BullectBuff.onPause()
         t.barrierBuff && t.barrierBuff.onPause()
         t.subPlaneBuff && t.subPlaneBuff.onPause()   
-        t.confuseBuff && t.confuseBuff.onPause()      
+        t.confuseBuff && t.confuseBuff.onPause()     
+        t.missleBuff && t.missleBuff.onPause() 
     }
 
 
@@ -233,6 +258,7 @@ class BuffManager {
         t.barrierBuff && t.barrierBuff.onResume()
         t.subPlaneBuff && t.subPlaneBuff.onResume()  
         t.confuseBuff && t.confuseBuff.onResume()   
+        t.missleBuff && t.missleBuff.onResume()
     }
 
     public get buffNum()

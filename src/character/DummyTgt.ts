@@ -1,4 +1,4 @@
-class DummyTgt extends BaseCharacter {
+class DummyTgt extends BaseCharacter implements IDefeatable{
 	public score = 1
 	public constructor() {
 		super()

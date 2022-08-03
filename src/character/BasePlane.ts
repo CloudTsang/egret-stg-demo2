@@ -30,6 +30,7 @@ class BasePlane extends BaseCharacter{
     protected MAP_SIZE:number = WorldData.MAP_SIZE
     /**间隔多少次移动指令检测一次越界 */
     protected checkOverBorderCount:number = 0
+    public missleLaucher:MissleLaucher
     protected readonly maxCheckOverBorderCount:number = 10
 
 	public constructor() {
@@ -38,6 +39,7 @@ class BasePlane extends BaseCharacter{
         this.shotTimer = new egret.Timer(this.shotSpeed, 1);
         this.moveData = new MoveData()
         this.barrier = new Barrier(this)
+        this.missleLaucher = new MissleLaucher(this)
 	}
 
     public boot(){
@@ -92,7 +94,7 @@ class BasePlane extends BaseCharacter{
             b.y = p.y            
             let d = p.bulletDirections[i];
             b.setDirection(p.rotation+d)
-            p.parent.addChild(b);
+            p.parent.addChild(b)
             b.shoot()                        
         }        
         p.shotTimer.start()        
@@ -152,7 +154,7 @@ class BasePlane extends BaseCharacter{
         return this.gears[this.curGear]
     }
 
-    public hit(b:Bullet){		
+    public hit(b:IWeapon){		
         if(this.barrier.isOn){  
             this.barrier.reduceEnergyByHit(b.barrierDamage)
         //    console.log("b.barrierDamage  : ", b.barrierDamage, this.barrier.energy);
@@ -200,7 +202,19 @@ class BasePlane extends BaseCharacter{
         }else{
             this.barrier.shut()
         }
-        
+    }
+
+    public lauchMissle(){
+        const p = this 
+        if(!p.missleLaucher.missleLauchable){
+            return
+        }
+        let m = p.missleLaucher.genMissle()
+        m.x = p.x
+        m.y = p.y
+        p.parent.addChild(m)
+        m.lauch()
+        p.missleLaucher.reset()
     }
 
     /**是否开启了护盾 */

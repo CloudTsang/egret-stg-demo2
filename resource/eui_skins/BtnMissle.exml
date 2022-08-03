@@ -1,0 +1,13 @@
+<e:Skin class="skins.BtnMissle" states="up,down,disabled"
+	 width="200"
+	height="200" xmlns:e="http://ns.egret.com/eui"
+     width.up="200" height.up="200" width.down="200" height.down="200">
+	<e:Rect width="200" height="200" x="0" y="1" ellipseWidth="200" ellipseHeight="200" fillAlpha="0.3" includeIn="up" fillColor="0xAEABAB" scaleX="1" scaleY="1"/>
+	<e:Rect width="200" height="200" x="0" y="1" ellipseWidth="200" ellipseHeight="200" fillAlpha="0.8" includeIn="down,disabled" fillColor="0x515050" scaleX="1" scaleY="1"/>
+	<e:Group width="200" height="200" x="0" y="0">
+		<e:Image percentHeight="60" percentWidth="60" source="sheet_json#missilelaucher" x="0" y="0" scaleX="1" scaleY="1"/>
+		<e:layout>
+			<e:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+		</e:layout>
+	</e:Group>
+</e:Skin>

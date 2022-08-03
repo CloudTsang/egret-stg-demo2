@@ -1,5 +1,10 @@
+interface IWeapon{
+	planeDamage:number
+	barrierDamage:number
+}
+
 /**普通子弹*/
-class Bullet extends CollisionObject implements IPoolObject{		
+class Bullet extends CollisionObject implements IPoolObject, IWeapon{		
 	protected size;
 	protected color;
 	protected moveData:MoveData
@@ -20,6 +25,7 @@ class Bullet extends CollisionObject implements IPoolObject{
 
 	protected _collisionPoints:egret.Point[]
 	public activate:boolean = false;	
+	protected collsioned:boolean = false
 	
 	public static range = 2000
 
@@ -48,6 +54,7 @@ class Bullet extends CollisionObject implements IPoolObject{
 	public shoot(){	
 		const b = this	
 		b.activate = true;
+		b.collsioned = false
 		b._sp.visible = true;
 		b.curDis = 0
 		if(b._blastBmp)b._blastBmp.visible = false;
@@ -66,7 +73,8 @@ class Bullet extends CollisionObject implements IPoolObject{
 	}
 
 	public dispose(shouldBlast:boolean=true){		
-		if(shouldBlast) this.blast();		
+		if(shouldBlast) this.blast();	
+		this.collsioned = true
 		setTimeout(()=>{
 			this.activate = false;
 			this.parent && this.parent.removeChild(this);	
@@ -75,6 +83,7 @@ class Bullet extends CollisionObject implements IPoolObject{
 
 	public disposeImmediately(){
 		this.activate = false;
+		this.collsioned = false
 		this.parent && this.parent.removeChild(this);	
 	}
 
@@ -135,6 +144,7 @@ class Bullet extends CollisionObject implements IPoolObject{
 	}
 
 	public collisionCheck(sp:egret.DisplayObject):boolean{	
+		if(this.collsioned) return false
 		for(let p of this.collisionPoints){
 			if(sp.hitTestPoint(p.x, p.y)){
 				return true;

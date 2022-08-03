@@ -1,6 +1,5 @@
 class PracticeScene  extends BasePlayScene{
-    private _enemy:DummyTgt[]
-
+    protected _enemy:DummyTgt[]
 	public constructor(stage:egret.Stage) {
 		super(stage)   
 	}
@@ -30,6 +29,8 @@ class PracticeScene  extends BasePlayScene{
         t.initUI()
         t.addEventListener(egret.Event.ENTER_FRAME, t.refreshStage, t);
         SoundManager.instance().play('normal_mp3');
+
+        t.addChild(t._player.missleLaucher.lockShape)
     }
 
     private initTgt(){
@@ -66,6 +67,9 @@ class PracticeScene  extends BasePlayScene{
             return;
         }     
         scene._collisionCheckInterval=0
+
+        scene._player.missleLaucher.refresh(scene._enemy)
+        scene._missleGauge.refresh()
        
         //自机子弹的碰撞检测
         for(let b of Bullet.allArr){            

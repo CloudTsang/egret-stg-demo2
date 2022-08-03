@@ -1,6 +1,7 @@
 class ControlPanel extends eui.Component{
 	private btn_shot:eui.Button;
 	private btn_barrier:eui.Button;
+	private btn_missle:eui.Button
 	private analog:eui.Component;
 	private _stage:egret.Stage;
 
@@ -9,8 +10,14 @@ class ControlPanel extends eui.Component{
 	private _stageAnalogX:number = 0;
 	private _stageAnalogY:number = 0;
 
-	public barrier_gauge:BarrierGauge;
 	public hp_gauge:HPGauge
+	public lock_gauge_disp:eui.Rect
+	public barrier_gauge_disp:eui.Rect
+
+	public lock_gauge:MissleGauge
+	public barrier_gauge:BarrierGauge;
+
+	protected test_gauge:CoolingQueueMcForCircle
 
 	public onDirectChange:(x:-1|0|1, y:-1|0|1)=>void
 	public onKeyDown:(e:{keyCode:Keyboard})=>void
@@ -27,7 +34,9 @@ class ControlPanel extends eui.Component{
 		const t = this
 		t.width = t._stage.stageWidth;		
 		t.btn_shot.x = t.width - t.btn_shot.width;
-		t.btn_barrier.x = t.btn_shot.x	
+		t.btn_barrier.parent.x = t.btn_shot.x	
+		t.btn_missle.parent.x = t.btn_shot.x
+
 		t.btn_shot.addEventListener(egret.TouchEvent.TOUCH_BEGIN, t.onPressShot, t)	
 		t.btn_shot.addEventListener(egret.TouchEvent.TOUCH_END, t.onReleaseShot, t)
 		t.btn_shot.addEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, t.onReleaseShot, t)
@@ -39,13 +48,22 @@ class ControlPanel extends eui.Component{
 		t._stageAnalogX = t.analog.x + t.x;
 		t._stageAnalogY = t.analog.y + t.y;
 
-		t.barrier_gauge.x = t.btn_barrier.x
-		t.barrier_gauge.width = t.btn_barrier.width
+		// t.barrier_gauge.x = t.btn_barrier.x - t.barrier_gauge.height
+		// t.barrier_gauge.y = t.btn_barrier.y + t.barrier_gauge.width - t.btn_barrier.width * 0.1
+		// t.barrier_gauge.width = t.btn_barrier.width * 0.8
 
-		t.hp_gauge.x = t.btn_barrier.x
-		t.hp_gauge.width = t.btn_barrier.width
+		// t.lock_gauge.x = t.btn_missle.x - t.lock_gauge.height
+		// t.lock_gauge.y = t.btn_missle.y + t.btn_missle.width - t.btn_missle.width * 0.1
+		// t.lock_gauge.width = t.btn_missle.width * 0.8
+
+		t.lock_gauge = new MissleGauge(t.lock_gauge_disp, t.btn_missle, t.btn_missle.width/2)
+		t.barrier_gauge = new BarrierGauge(t.barrier_gauge_disp, t.btn_barrier.width/2)
+
+		t.hp_gauge.x = t.btn_shot.x
+		t.hp_gauge.width = t.btn_shot.width
 
 		t.btn_barrier.addEventListener(egret.TouchEvent.TOUCH_TAP, t.onPressBarrier, t)
+		t.btn_missle.addEventListener("touchTap", t.onMissle, t)
 	}
 
 	private onPressShot(e){
@@ -58,6 +76,10 @@ class ControlPanel extends eui.Component{
 
 	private onPressBarrier(e){
 		this.onKeyDown && this.onKeyDown({keyCode:Keyboard.X});
+	}
+
+	private onMissle(e){
+		this.onKeyDown && this.onKeyDown({keyCode:Keyboard.C});
 	}
 
 	private onPressAnalog(e:egret.TouchEvent){

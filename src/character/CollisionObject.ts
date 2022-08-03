@@ -11,4 +11,8 @@ class CollisionObject extends egret.Sprite {
 	public get isActivated(){
 		return this.parent != null
 	}
+
+	public get radRotation(){
+		return this.rotation * Math.PI / 180
+	}
 }

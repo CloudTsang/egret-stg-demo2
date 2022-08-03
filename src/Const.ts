@@ -19,6 +19,7 @@ class PlayEvents{
     public static readonly CLOSE_DESCRIPT = 'CLOSE_DESCRIPT';
 
     public static readonly BACK_2_TITLE = 'BACK_2_TITLE'
+    public static readonly MISSLE_HIT = 'MISSLE_HIT'
 }
 
 enum GameMode{
@@ -81,6 +82,8 @@ enum BuffType{
     CLEAN_ENEMY,
     /**敌机失误 */
     CONFUSE_ENEMY,
+    /**导弹强化 */
+    MISSLE_BOOST
 }
 
 class Keyboard{

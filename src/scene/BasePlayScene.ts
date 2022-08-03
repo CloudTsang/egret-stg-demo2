@@ -6,12 +6,16 @@ class BasePlayScene  extends egret.Sprite{
 
 	protected _playerController:IController;
     protected _controlPanel:ControlPanel;
-	
+    
+    protected _enemy
+
     protected _radar:Radar
-    protected _barrierGauge:BarrierGauge
+    protected _barrierGauge:BarrierGauge|BarrierGaugePC
     protected _hpGauge:HPGauge
+    protected _missleGauge:MissleGauge|MissleGaugePC
 
     protected _collisionCheckInterval:number = 0;
+    protected _maxCollisionCheckInterval:number = 2
     /**射出子弹次数 */
     protected _playerBullet:number;
 	/**击落敌人数 */
@@ -20,10 +24,8 @@ class BasePlayScene  extends egret.Sprite{
     protected _timelimit:TimeLimit
 	protected _score:number
     
- 
-
     protected mapSizeData:MapSizeData
-     protected _gameovered:boolean
+    protected _gameovered:boolean
 
      //test
      protected _zoomed:boolean = false
@@ -47,7 +49,6 @@ class BasePlayScene  extends egret.Sprite{
         //test
         // this._bgLayer.scaleX = 5
         // this._bgLayer.scaleY = 5
-
 
         const midx = this.width/2
         const midy = this.height/2
@@ -90,14 +91,23 @@ class BasePlayScene  extends egret.Sprite{
             t._playerController.setPanel(cp);
             t._barrierGauge = cp.barrier_gauge
             t._hpGauge = cp.hp_gauge
+            t._missleGauge = cp.lock_gauge
         }else{
-            const bg = new BarrierGauge()
+            const bg = new BarrierGaugePC()
             bg.width = t.width * 0.4
             bg.height = 50
             bg.x = t.width * 0.3
             bg.y = t.height - 100
             t.addChild(bg)
             t._barrierGauge = bg
+
+            const mg = new MissleGaugePC()
+            mg.width = t.width * 0.4
+            mg.height = 50
+            mg.x = t.width * 0.3
+            mg.y = t.height - 150
+            t.addChild(mg)
+            t._missleGauge = mg
 
             const hpg = new HPGauge()
             hpg.width = t.width * 0.4
@@ -109,7 +119,8 @@ class BasePlayScene  extends egret.Sprite{
         }
         t._barrierGauge.plane = t._player
         t._barrierGauge.refresh()
-
+        t._missleGauge.plane = t._player
+        t._missleGauge.refresh()
         t._hpGauge.plane = t._player
         t._hpGauge.refresh()
 		t.initTimeLimit()
@@ -150,7 +161,8 @@ class BasePlayScene  extends egret.Sprite{
         }, this) 
         player.addEventListener(PlayEvents.OVER_BORDER, this.onOverBorder, this)
         player.addEventListener(PlayEvents.BUFF_GAIN, this.onPlayerGetBuff, this)
-         player.addEventListener(PlayEvents.BUFF_LOSE, this.onPlayerLoseBuff, this)
+        player.addEventListener(PlayEvents.BUFF_LOSE, this.onPlayerLoseBuff, this)
+        player.missleLaucher.addEventListener(PlayEvents.MISSLE_HIT, this.onMissleBlast, this)
         return new Promise((resolve, reject)=>{
             egret.Tween.get(player)
             .to({
@@ -226,6 +238,45 @@ class BasePlayScene  extends egret.Sprite{
         }
     }
 
+    protected onMissleBlast(evt:egret.Event){
+        const t = this
+        const missle = evt.data.missle as Missle
+        const tgt = missle.tgt
+        const ptc = missle.blast()
+        ptc.x = tgt.position.x
+        ptc.y = tgt.position.y
+        ptc.start(300)
+        t._bgLayer.addChild(ptc)
+        ptc.once(egret.Event.COMPLETE, (e)=>{
+            ptc.parent && ptc.parent.removeChild(ptc)
+        }, t)
+        SoundManager.instance().playBgs("explode_mp3")
+        let newEnemys = []
+        for(let i=0; i<t._enemy.length; i++){
+            let e = t._enemy[i]
+            let e1 = e as IDefeatable
+            if(e == tgt){
+                e1.hit2(missle.planeDamage)
+            }else if(egret.Point.distance(e1.position, tgt.position) < missle.dmgDistance){
+                // console.log("sub damage")
+                e1.hit2(missle.subDamage)
+            }
+            if(e1.isDefeated()){
+                SoundManager.instance().playBgs("explode_mp3")
+                e1.crash();
+                e1.removeEventListener(PlayEvents.OVER_BORDER, t.onOverBorder, t)
+                t._score += e1.score
+                t._radar.removeObject(e as CollisionObject)
+                
+                t._defeatEnemy ++
+            }else{
+                newEnemys.push(e)
+            }
+        }
+        missle.dispose()
+        t._enemy = newEnemys
+    }
+
     protected onPlayerGetBuff(e:egret.Event){
         throw new Error("Function not implemented!")
     }
@@ -235,9 +286,10 @@ class BasePlayScene  extends egret.Sprite{
     }
 
     public addChild(child: egret.DisplayObject): egret.DisplayObject{
-        if(child instanceof Bullet){
+        if(child instanceof Bullet || child instanceof Missle){
             return this._bgLayer.addChild(child)
         }
+        
         return super.addChild(child)
     }
 

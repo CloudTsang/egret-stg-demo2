@@ -2,7 +2,6 @@
 <e:Skin class="skins.ControlPanel"
 	 width="800"
 	height="400" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*">
-	<e:Button id="btn_barrier" label="Button" x="601" y="-26" skinName="skins.BtnJet"/>
 	<e:Button id="btn_shot" label="Button" x="601" y="203" skinName="skins.BtnBullet"/>
 	<e:Group id="analog" width="400" height="400" x="200" y="200" anchorOffsetX="200" anchorOffsetY="200">
 		<e:Image width="300" height="300"  horizontalCenter="0" verticalCenter="0" source="sheet_json#analog"/>
@@ -36,6 +35,21 @@
 			</e:layout>
 		</e:Group>
 	</e:Group>
-	<ns1:BarrierGauge id="barrier_gauge" width="200" height="30" x="601" y="-83"/>
-	<ns1:HPGauge id="hp_gauge" width="200" height="30" x="601" y="-134"/>
+	<ns1:HPGauge id="hp_gauge" width="200" height="30" x="601" y="-300.845"/>
+	
+	<e:Group width="200" height="200" x="601" y="-26">
+		<e:Button id="btn_barrier" label="Button" skinName="skins.BtnJet" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0"/>
+		<e:Rect id="barrier_gauge_disp" percentHeight="100" percentWidth="100" verticalCenter="0" horizontalCenter="0" fillAlpha="0" strokeAlpha="1" strokeWeight="15" ellipseWidth="1000" ellipseHeight="1000" strokeColor="0xECC806" touchEnabled="false" touchChildren="false"/>
+		<e:layout>
+			<e:BasicLayout/>
+		</e:layout>
+	</e:Group>
+
+    <e:Group width="200" height="200" x="601" y="-251">
+			<e:Button id="btn_missle" label="Button" x="601.698" y="-251.423" skinName="skins.BtnMissle" horizontalCenter="0" verticalCenter="0"/>
+        <e:Rect id="lock_gauge_disp" percentHeight="100" percentWidth="100" verticalCenter="0" horizontalCenter="0" fillAlpha="0" strokeAlpha="1" strokeWeight="15" ellipseWidth="1000" ellipseHeight="1000" strokeColor="0xECC806" touchEnabled="false" touchChildren="false"/>    
+        <e:layout>
+			<e:BasicLayout/>
+		</e:layout>
+    </e:Group>
 </e:Skin>

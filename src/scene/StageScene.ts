@@ -13,7 +13,6 @@ class StageScene  extends BasePlayScene{
     
     protected _rank:number
 
-
 	public constructor(stage:egret.Stage) {
 		super(stage)   
 
@@ -41,6 +40,11 @@ class StageScene  extends BasePlayScene{
         t.addEventListener(egret.Event.ENTER_FRAME, t.refreshStage, t);
 
         t.startEnemyTimer()
+        
+        t.addChild(t._player.missleLaucher.lockShape)
+        // window['calc'] = ()=>{
+        //     t._player.missleLaucher.calc(t._enemy)
+        // }
 
     }
 
@@ -87,12 +91,14 @@ class StageScene  extends BasePlayScene{
         let ew = WorldData.PLANE_WIDTH
         let eh = WorldData.PLANE_HEIGHT
         const span = 1000
-        for(let i=0; i<4; i++){
+        //test
+        for(let i=0; i<5; i++){
             let ex = 0
             let ey = 0
             let er:0|90|180|270 = 0
-
-            switch(i){
+            const tmpi = i
+            // let tmpi = 0
+            switch(tmpi){
                 case 0: //top
                     ex = t._player.x + Math.random()*t.width - t.width/2
                     ey = t._player.y - t.height/2 - eh - span;
@@ -122,7 +128,7 @@ class StageScene  extends BasePlayScene{
             enemy.y = ey
             enemy.boot()
             enemy.aiDelay(i*2)
-            enemy.addEventListener(PlayEvents.OVER_BORDER, this.onOverBorder, this)
+            enemy.addEventListener(PlayEvents.OVER_BORDER, t.onOverBorder, t)
             enemy.refreshPosition()
             t._bgLayer.addGameObj(enemy)
             t._enemy.push(enemy);    
@@ -234,12 +240,16 @@ class StageScene  extends BasePlayScene{
         scene._timelimit.refresh()
         // return
         
-        if(scene._collisionCheckInterval!=2){
+        if(scene._collisionCheckInterval!=scene._maxCollisionCheckInterval){
             //每x帧进行一次碰撞检测            
             scene._collisionCheckInterval++
             return;
         }     
         scene._collisionCheckInterval=0;
+
+        scene._player.missleLaucher.refresh(scene._enemy)
+        scene._missleGauge.refresh()
+        
 
         //自机和敌机的碰撞
         if(WorldData.PLANE_CRASH){

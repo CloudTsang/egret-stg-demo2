@@ -8,6 +8,7 @@
 	"exmls": [
 		"resource/eui_skins/BtnBullet.exml",
 		"resource/eui_skins/BtnJet.exml",
+		"resource/eui_skins/BtnMissle.exml",
 		"resource/eui_skins/ButtonSkin.exml",
 		"resource/eui_skins/ControlPanel.exml",
 		"resource/eui_skins/Description.1.exml",

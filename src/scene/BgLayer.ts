@@ -87,6 +87,7 @@ class BgLayer extends egret.Sprite{
 	}
 
 	public addChild(child: egret.DisplayObject): egret.DisplayObject{
+		// console.log(child)
         return this._layer.addChild(child)
     }
 

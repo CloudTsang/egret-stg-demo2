@@ -1,4 +1,7 @@
 class AIConfig {
+    public static distanceData:{[key:number]:number} = {}
+
+
 	protected plane:BasePlane
 	/**开始射击的夹角 */
 	protected startShotAngle:number
@@ -304,6 +307,7 @@ class AIConfig {
 			...this.positionData,
 			distance
 		}
+		AIConfig.distanceData[enemy.hashCode] = distance
 	}
 
 	/**计算目标和敌机的移动方向是否在同一侧 */
@@ -453,6 +457,9 @@ class AIConfig {
 		}
 	}
 
+	public dispose(){
+		delete AIConfig.distanceData[this.plane.hashCode]
+	}
 
 
 
